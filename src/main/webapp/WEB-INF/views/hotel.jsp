@@ -5,6 +5,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/common.css"/>
+ <script type="text/javascript" src="resources/js/jquery-1.12.0.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <!--End Head Tag-->
 <style>
@@ -35,6 +38,24 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index">Home</a></li>
 				<li><a href="profile">Profile</a></li>
+				<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">SearchByCategory<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="${pageContext.request.contextPath}/threeStar">Three-Star</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/fourStar">Four-Star</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/fiveStar">Five-Star</a>
+								</li>
+				            </ul>
+				    </li>
 				<li><a href="review">ReviewMessage</a></li>
 				<li><a href="#">Change Password</a></li>
 				<li><a href="#">Add New Admin</a></li>

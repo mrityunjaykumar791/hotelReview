@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions. 
  */
 package com.mindfire.reviewhotel.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,9 @@ import com.mindfire.reviewhotel.web.dto.HotelDTO;
 import com.mindfire.reviewhotel.web.dto.ReviewDTO;
 import com.mindfire.reviewhotel.web.service.HotelService;
 /**
- * @author mindfire
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016 
  *
  */
 
@@ -25,12 +27,27 @@ public class HotelController {
 	@Autowired
 	private HotelService hotelService;
 	
+	/**
+	 * Request mapping with adminAction Value To Save the hotel details providedd By admin.
+	 * 
+	 * @param hotelDto
+	 * @param model
+	 * @return HOTEL_PAGE
+	 */
 	 @RequestMapping(value="adminAction",method = RequestMethod.POST)
 	    public String submit(@ModelAttribute("hotelData") HotelDTO hotelDto, Model model) {
 	        model.addAttribute("hotelData", new HotelDTO());
 	        return hotelService.saveHotelDetails(hotelDto, model);
 	    }
 	 
+	 /**
+	  * Request mapping with hotelTemplate value With Id To search hotel Details By provided hotelId. 
+	  * 
+	  * @param reviewDto
+	  * @param model
+	  * @param hotelId
+	  * @return HOTEL_TEMPLATE
+	  */
 	 @RequestMapping(value="hotelTemplate/{id}", method=RequestMethod.GET)
 	    public ModelAndView hotelTemplate(@ModelAttribute("reviewData") ReviewDTO reviewDto, Model model,@PathVariable("id") Long hotelId) {
 	    	model.addAttribute("reviewData", new ReviewDTO());

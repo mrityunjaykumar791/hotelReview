@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions.
  */
 package com.mindfire.reviewhotel.web.service;
 
@@ -21,72 +21,107 @@ import com.mindfire.reviewhotel.web.repository.HotelRepository;
 import com.mindfire.reviewhotel.web.repository.ReviewRepository;
 
 /**
- * @author mindfire
- *
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016
+ * 
+ *        Service class for Hotel related Operations
  */
 @Service
 public class HotelService {
 
 	@Autowired
 	public HotelRepository hotelRepository;
+
 	@Autowired
 	private ReviewRepository reviewRepository;
-	
-	public String saveHotelDetails(HotelDTO hotelDto, Model model){
-		
+
+	/**
+	 * This method is used for saving the details of the hotel.
+	 * 
+	 * @param hotelDto
+	 * @param model
+	 * @return HOTEL_PAGE
+	 */
+	public String saveHotelDetails(HotelDTO hotelDto, Model model) {
+
 		Hotel newHotel = new Hotel();
-		
+
 		newHotel.setHotelName(hotelDto.getHotelName());
 		newHotel.setHotelWebsite(hotelDto.getHotelWebsite());
 		newHotel.setHotelLocation(hotelDto.getHotelLocation());
 		newHotel.setHotelDescription(hotelDto.getHotelDescription());
 		newHotel.setHotelCategory(hotelDto.getHotelCategory());
 		newHotel.setHotelImage(hotelDto.getHotelImage());
-		
+
 		Hotel createdHotel = hotelRepository.save(newHotel);
-		
-		if(createdHotel.equals(null)){
-			model.addAttribute("status","Hotel Not registred");
+
+		if (createdHotel.equals(null)) {
+			model.addAttribute("status", "Hotel Not registred");
 			return Constant.HOTEL_PAGE;
-		}else{
-			model.addAttribute("status","Hotel registred");
+		} else {
+			model.addAttribute("status", "Hotel registred");
 			return Constant.HOTEL_PAGE;
 		}
 	}
-	
-	public ModelAndView searchHotelDetails(SearchDTO searchDto, Model model){
+
+	/**
+	 * This method is used for search the hotel based on Location.
+	 * 
+	 * @param searchDto
+	 * @param model
+	 * @return ModelAndView Object.
+	 */
+	public ModelAndView searchHotelDetails(SearchDTO searchDto, Model model) {
 		List<Hotel> hotelList = hotelRepository.findByHotelLocationIgnoreCaseContaining(searchDto.getHotelLocation());
-		Map<String,Object> modelMap = new HashMap<String,Object>();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
 		modelMap.put("hotels", hotelList);
 		return new ModelAndView(Constant.SEARCH_BY_LOCATION, modelMap);
-		
+
 	}
-	
-	
-	public ModelAndView searchByCategory(String hotelCategory){
+
+	/**
+	 * This method is used for search the hotel based on category.
+	 * 
+	 * @param hotelCategory
+	 * @return ModelAndView object
+	 */
+	public ModelAndView searchByCategory(String hotelCategory) {
 		List<Hotel> hotelCategoryList = hotelRepository.findByHotelCategoryIgnoreCaseContaining(hotelCategory);
-		Map<String,Object> modelMap = new HashMap<String,Object>();
-		modelMap.put("categoryHotels", hotelCategoryList);
+		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
-		return new ModelAndView(Constant.SEARCH_BY_CATEGORY,modelMap);
+		modelMap.put("categoryHotels", hotelCategoryList);
+		return new ModelAndView(Constant.SEARCH_BY_CATEGORY, modelMap);
 	}
-	
-	public ModelAndView searchHotelDetailById(Long hotelId){
+
+	/**
+	 * This method is used for search the hotel based on parameterized id.
+	 * 
+	 * @param hotelId
+	 * @return ModelAndView object
+	 */
+	public ModelAndView searchHotelDetailById(Long hotelId) {
 		Hotel hotel = hotelRepository.findById(hotelId);
-		List<Review> reviewList = reviewRepository.findByHotelId(hotel);
-		Map<String,Object> modelMap = new HashMap<String,Object>();
+		List<Review> reviewList = reviewRepository.findByHotelIdOrderByReviewDateDesc(hotel);
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
 		modelMap.put("hotelById", hotel);
 		modelMap.put("reviews", reviewList);
-		return new ModelAndView(Constant.HOTEL_TEMPLATE,modelMap);
+		return new ModelAndView(Constant.HOTEL_TEMPLATE, modelMap);
 	}
-	
-	public ModelAndView searchHotelByName(String hotelName){
-		List<Hotel> hotelList = hotelRepository.findByHotelName(hotelName);
-		
-		Map<String,Object> modelMap = new HashMap<String,Object>();
+
+	/**
+	 * This method is used for search hotel based on parameterized hotelName.
+	 * 
+	 * @param hotelName
+	 * @return ModelAndView object
+	 */
+	public ModelAndView searchHotelByName(String hotelName) {
+		List<Hotel> hotelList = hotelRepository.findByHotelNameIgnoreCaseContaining(hotelName);
+
+		Map<String, Object> modelMap = new HashMap<String, Object>();
 		modelMap.put("hotelsList", hotelList);
-		
-		return new ModelAndView(Constant.HOME_PAGE,modelMap);
+		return new ModelAndView(Constant.HOME_PAGE, modelMap);
 	}
 }

@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions.
  */
 package com.mindfire.reviewhotel.web.service;
 
@@ -14,18 +14,31 @@ import com.mindfire.reviewhotel.web.dto.UserInfoDTO;
 import com.mindfire.reviewhotel.web.repository.UserRepository;
 
 /**
- * @author mindfire
- *
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016
+ * 
+ *        Service class for UserInfo related Operations
  */
 @Service
 public class UserInfoService {
+
 	@Autowired
 	public UserRepository userRepository;
 
+	/**
+	 * This method is used for saving the user information data based on
+	 * UserInfoDto data.
+	 * 
+	 * @param userInfoDto
+	 * @param model
+	 * @see BCryptPasswordEncoder
+	 * @return HOME_PAGE
+	 */
 	public String createUserInfo(UserInfoDTO userInfoDto, Model model) {
 		BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder();
-
 		UserInfo newUser = new UserInfo();
+
 		newUser.setFirstName(userInfoDto.getFirstName());
 		newUser.setLastName(userInfoDto.getLastName());
 		newUser.setUserName(userInfoDto.getUserName());
@@ -34,11 +47,12 @@ public class UserInfoService {
 		newUser.setRole("user");
 
 		UserInfo createdUser = userRepository.save(newUser);
+
 		if (createdUser == null) {
 			return Constant.HOME_PAGE;
 		} else {
 			model.addAttribute("userDetails", newUser);
-			return Constant.SIGN_IN_PAGE;
+			return Constant.HOME_PAGE;
 		}
 	}
 }

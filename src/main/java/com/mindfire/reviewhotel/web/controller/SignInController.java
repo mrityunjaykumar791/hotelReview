@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions.
  */
 package com.mindfire.reviewhotel.web.controller;
 
@@ -19,8 +19,9 @@ import com.mindfire.reviewhotel.web.dto.SignInDTO;
 import com.mindfire.reviewhotel.web.service.SignInService;
 
 /**
- * @author mindfire
- *
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016 
  */
 @Controller
 public class SignInController {
@@ -28,6 +29,14 @@ public class SignInController {
 	@Autowired
 	private SignInService signInService;
 	
+	/**
+	 * Request mapping with signInAction value to validate the User.
+	 * 
+	 * @param signInDto
+	 * @param model
+	 * @param session
+	 * @return HOME_PAGE or SIGN_IN_PAGE
+	 */
 	 @RequestMapping(value="signInAction",method = RequestMethod.POST)
 	    public String submit(@ModelAttribute("signInData") SignInDTO signInDto, Model model, HttpSession session) {
 		    model.addAttribute("hotelData",new HotelDTO());
@@ -35,6 +44,12 @@ public class SignInController {
 	        return signInService.validate(signInDto,session);
 	    }
 	 
+	 /**
+	  * Request mapping with logout value to invalidate the session.
+	  * @param model
+	  * @param session
+	  * @return HOME_PAGE
+	  */
 	 @RequestMapping(value="logout", method = RequestMethod.GET)
 	 public String logout(Model model,HttpSession session){
 		 session.invalidate();

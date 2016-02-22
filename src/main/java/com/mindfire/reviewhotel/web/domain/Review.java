@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions.  
  */
 package com.mindfire.reviewhotel.web.domain;
 
@@ -15,8 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * @author mrityunjay
- *
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016 
+ * 
+ * Review Class is used as Entity Class for review details.
  */
 @Entity
 @Table(name="review")
@@ -114,4 +117,20 @@ public class Review {
 	public void setHotelId(Hotel hotelId) {
 		this.hotelId = hotelId;
 	}
+
+	/**
+	 * @return the reviewDate
+	 */
+	public Timestamp getReviewDate() {
+		return reviewDate;
+	}
+
+	/**
+	 * @param reviewDate the reviewDate to set
+	 */
+	public void setReviewDate(Timestamp reviewDate) {
+		this.reviewDate = reviewDate;
+	}
+	
+	
 }

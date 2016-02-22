@@ -27,10 +27,10 @@
 											width="370" class="img-rectangle" />
 				</div>
 				<div class="panel-footer">
-				    <c:out value="${categoryHotel.id }" /><br/>
 					<c:out value="${categoryHotel.hotelDescription}" /><br/>
-					<c:out value="${categoryHotel.hotelWebsite}" /><br/>
-					<c:out value="${categoryHotel.hotelCategory }"/>
+					<a>
+					<c:out value="${categoryHotel.hotelWebsite}" />
+					</a>
 					<p>
 				      <a class="btn" href="hotelTemplate/<c:out value="${categoryHotel.id }" />">View details »</a>
 			       </p>

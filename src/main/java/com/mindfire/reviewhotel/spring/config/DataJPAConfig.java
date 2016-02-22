@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions. 
  */
 package com.mindfire.reviewhotel.spring.config;
 import java.util.Properties;
@@ -20,8 +20,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * @author mindfire
- *
+ * DataJPAConfig Class is Used For Configuration of Spring DataJPA.
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016 
  */
 @Configuration
 @EnableTransactionManagement
@@ -37,7 +39,10 @@ public class DataJPAConfig {
 	private ConfigurableEnvironment configurableEnvironment;
 
 	/**
-	 * Entity manager definition
+	 * Entity manager definition.
+	 * Create a new LocalContainerEntityManagerFactoryBean object.
+	 * We need to create this object because it creates the JPA EntityManagerFactory.
+	 * @return LocalContainerEntityManagerFactoryBean object.
 	 */
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -75,6 +80,9 @@ public class DataJPAConfig {
 
 	/**
 	 * Creates the the JpaTransactionManager instance.
+	 * Configure the entity manager factory whose transactions are managed by
+	 * the created JpaTransactionManager object.
+	 * @return JpaTransactionManager Object.
 	 */
 	@Bean
 	public PlatformTransactionManager transactionManager() {
@@ -83,6 +91,10 @@ public class DataJPAConfig {
 		return transactionManager;
 	}
 
+	/**
+	 * Translates native resource exceptions to Spring's DataAccessException hierarchy
+	 * @return
+	 */
 	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();

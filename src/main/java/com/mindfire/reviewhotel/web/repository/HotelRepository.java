@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions.
  */
 package com.mindfire.reviewhotel.web.repository;
 
@@ -11,12 +11,15 @@ import org.springframework.stereotype.Repository;
 import com.mindfire.reviewhotel.web.domain.Hotel;
 
 /**
- * @author mindfire
- *
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016
+ * 
+ * Repository for {@link Hotel} Entity.
  */
 @Repository
 public interface HotelRepository extends JpaRepository<Hotel, Long> {
-	public List<Hotel> findByHotelName(String hotelName);
+	public List<Hotel> findByHotelNameIgnoreCaseContaining(String hotelName);
 	
 	public List<Hotel> findByHotelLocationIgnoreCaseContaining(String hotelLocation);
 	

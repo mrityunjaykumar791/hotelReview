@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions. 
  */
 package com.mindfire.reviewhotel.web.domain;
 
@@ -14,8 +14,11 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 
 /**
- * @author mindfire
- *
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016 
+ * 
+ * UserInfo Class is used as Entity Class for user details.
  */
 @Entity
 @Table(name = "UserInfo")

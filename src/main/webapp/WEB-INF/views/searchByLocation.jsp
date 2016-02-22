@@ -69,7 +69,7 @@
 				</div>
 				<div class="panel-footer">
 					<c:out value="${hotelBasedOnLocation.hotelDescription}" /><br/>
-					<c:out value="${hotelBasedOnLocation.hotelWebsite}" />
+					<a><c:out value="${hotelBasedOnLocation.hotelWebsite}" /></a>
 					<p>
 				      <a class="btn" href="hotelTemplate/<c:out value="${hotelBasedOnLocation.id}" />">View details »</a>
 			       </p>
@@ -81,6 +81,5 @@
 	</div>
 
 </div>
-	
 </body>
 </html>

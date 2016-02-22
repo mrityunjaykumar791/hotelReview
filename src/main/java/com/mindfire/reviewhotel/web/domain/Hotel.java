@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Copyright (c) Mindfire Solutions.
  */
 package com.mindfire.reviewhotel.web.domain;
 
@@ -14,8 +14,11 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 
 /**
- * @author mindfire
- *
+ * @author mrityunjay kumar
+ * @version 1.0
+ * @since 18-02-2016 
+ * 
+ * Hotel Class is used as Entity Class for hotel details.
  */
 
 @Entity
@@ -45,9 +48,6 @@ public class Hotel {
 	
 	@Column(name="hotel_image")
 	private String hotelImage;
-	
-//	@OneToMany(mappedBy="hotel")
-//	private List<Review> review;
 	
 	@Column(name = "uploaded_date", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Timestamp uploadedDate;
@@ -107,15 +107,4 @@ public class Hotel {
 	public void setHotelCategory(String hotelCategory) {
 		this.hotelCategory = hotelCategory;
 	}
-
-//	public List<Review> getReview() {
-//		return review;
-//	}
-//
-//	public void setReview(List<Review> review) {
-//		this.review = review;
-//	}
-
-	// For Future Use.
-	
 }

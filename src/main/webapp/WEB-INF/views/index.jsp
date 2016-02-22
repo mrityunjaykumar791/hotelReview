@@ -48,6 +48,7 @@
 						</div>
 					</form:form>
 
+				<!-- This container is used for Displaying the hotel List -->
 					<div class="container-fluid">
 						<div class="row">
 							<c:forEach var="hotelsDetails" items="${hotelsList}">

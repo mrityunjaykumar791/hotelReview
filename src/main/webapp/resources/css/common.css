@@ -1,16 +1,3 @@
-.bg-1 { 
-      background-color: #1abc9c;
-      color: #ffffff;
-  }
-.headerDiv {
-	padding-top: 20px;
-}
-
-.titleDiv {
-	padding-top: 40px;
-	font-size: 20px;
-}
-
 /* for search box */
 .searchDiv {
 	margin-right: 180px;
@@ -22,17 +9,6 @@
 /* for search button */
 .searchBtn {
 	transform: scale(1.2);
-}
-/* for mouse hover on image */
-#searchHotelDiv:hover {
-	transform: scale(1.05);
-}
-/* for search result */
-.searchResultDiv {
-	margin-top: 50px;
-	font-size: 16px;
-	padding-top: 20px;
-	padding-left: 20px;
 }
 
 .imageDiv {
@@ -63,65 +39,14 @@
 	width: 100px;
 }
 
-/*login position*/
-.login-background {
-	background-size: cover;
-	width: 100%;
-	height: 100%;
-}
-
-.transparent {
-	/*opacity: 0.5;*/
-	background: rgba(179, 179, 204, 0.5);
-}
-
 .btn-signin {
 	background: #2F3030;
 }
+
 /* forgote password color? */
 .graycolor {
 	color: #2F3030;
 }
-
-/* Registraion CSS */
-
-/* body background */
-body {
-	
-}
-
-/* for jumbotron transparent class */
-.reg3Transparent {
-	background: rgba(179, 179, 204, 0.5);
-}
-
-/* for middle section */
-.reg3Div {
-	margin-top: 80px;
-	padding-left: 80px;
-}
-/* header */
-h3 {
-	margin-left: 100px;
-}
-
-/* for logo */
-.reg3Div>img {
-	margin-left: 135px;
-}
-
-/* for input tag */
-.inputDiv3 {
-	margin-top: 10px;
-	margin-left: 50px;
-	padding-left: 30px;
-}
-
-/* right side register_Now image
-.regPic {
-    margin-top:50px;
-    padding-left: 50px;
-}*/
 
 /*hotel template css */
 
@@ -133,15 +58,9 @@ h3 {
 /* Set gray background color and 100% height */
 .sidenav {
 	background-color: #f1f1f1;
-	height: 100%;
+	height: 150%;
 }
 
-/* Set black background color, white text and some padding */
-/* footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }*/
 /* for Image Size */
 .item {
 	height: 400px;
@@ -159,6 +78,3 @@ h3 {
 		height: auto;
 	}
 }
-
-/* forgot pass Css */
-/*<link rel="stylesheet" type="text/css" href="css/login3.css">*/

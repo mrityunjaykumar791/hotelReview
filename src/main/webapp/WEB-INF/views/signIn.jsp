@@ -54,7 +54,7 @@
 					</form>
 					<form:form action="forgotAction">
 					<div>
-						<label>Forgot your password:<a href="forgot" class="graycolor">Click Here</a></label>
+						<label>Forgot your password:<a href="#" class="graycolor">Click Here</a></label>
 					</div>
 					</form:form>
 		
