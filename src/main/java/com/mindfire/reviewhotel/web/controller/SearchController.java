@@ -32,7 +32,7 @@ public class SearchController {
 	private UserInfoService userInfoService;
 	
 	/**
-	 * Request mapping with searchAction Value To search hotels based on the location.
+	 * Request mapping with searchAction Value and transfer the control to the service for searching hotels based on the location.
 	 * 
 	 * @param searchDto
 	 * @param model
@@ -74,11 +74,11 @@ public class SearchController {
 	    }
 	    
 	    /**
-	     * Request mapping with indexAction to search hotel by provided name.
+	     * Request mapping with indexAction and transfer control to service for to search hotel by provided name.
 	     * 
 	     * @param searchByNameDto
 	     * @param model
-	     * @return HOME_PAGE
+	     * @return ModelAndView object
 	     */
 	    @RequestMapping(value="indexAction",method=RequestMethod.POST)
 	    public ModelAndView searchByName(@ModelAttribute("searchByNameData") SearchByNameDTO searchByNameDto,Model model){
@@ -86,7 +86,7 @@ public class SearchController {
 	    }
 	    
 	    /**
-	     * Request mapping  with userDetails/{id} to search user details by provided  userId.
+	     * Request mapping  with userDetails/{id} url and transfer control to service for search user details.
 	     * 
 	     * @param userId
 	     * @return ModelAndView object.

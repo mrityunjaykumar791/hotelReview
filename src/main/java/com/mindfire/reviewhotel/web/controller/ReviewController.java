@@ -27,22 +27,22 @@ public class ReviewController {
 	private ReviewService reviewService;
 	
 	/**
-	 * Request mapping with reviewAction Value To Save the review Details.
+	 * Request mapping with reviewAction Value and transfer the control to the service for Saving the review Details.
 	 * 
 	 * @see ReviewDTO
 	 * @param reviewDto
 	 * @param model
-	 * @return HOTEL_TEMPLATE
+	 * @return ModelAndView object
 	 */
 	 @RequestMapping(value="reviewAction",method = RequestMethod.POST)
 	    public ModelAndView submit(@ModelAttribute("reviewData") ReviewDTO reviewDto, Model model) {
-//	        model.addAttribute("reviewData", new ReviewDTO());
-//	        model.addAttribute("searchByNameData",new SearchByNameDTO());
 	        return reviewService.saveReviewDetails(reviewDto,model);
 	    }
 	 
 	 /**
-	  * This Controller map the request based on url and transfer the control to the service for searching review details.
+	  * This Controller map the request based on url 
+	  * and transfer the control to the service for searching review details.
+	  * 
 	  * @param reviewDto
 	  * @param model
 	  * @param reviewId
@@ -50,7 +50,6 @@ public class ReviewController {
 	  */
 	 @RequestMapping(value="hotelTemplateAfterDeleteComment/{reviewId}", method=RequestMethod.GET)
 	    public ModelAndView deleteComment(@ModelAttribute("reviewData") ReviewDTO reviewDto, Model model,@PathVariable("reviewId") Long reviewId) {
-	    	model.addAttribute("reviewData", new ReviewDTO());
 	        return reviewService.searchReviewDetail(reviewId);
 	    }
 }

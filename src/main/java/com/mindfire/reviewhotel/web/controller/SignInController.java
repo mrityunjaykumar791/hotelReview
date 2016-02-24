@@ -38,8 +38,8 @@ public class SignInController {
 	 */
 	 @RequestMapping(value="signInAction",method = RequestMethod.POST)
 	    public String submit(@ModelAttribute("signInData") SignInDTO signInDto, Model model, HttpSession session) {
-		    model.addAttribute("searchByNameData",new SearchByNameDTO());
-		    model.addAttribute("signIndata",new SignInDTO());
+		    //model.addAttribute("searchByNameData",new SearchByNameDTO());
+		    //model.addAttribute("signIndata",new SignInDTO());
 	        return signInService.validate(signInDto,session,model);
 	    }
 	 

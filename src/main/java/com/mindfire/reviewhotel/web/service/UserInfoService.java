@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mindfire.reviewhotel.web.constant.Constant;
 import com.mindfire.reviewhotel.web.domain.UserInfo;
+import com.mindfire.reviewhotel.web.dto.SearchByNameDTO;
 import com.mindfire.reviewhotel.web.dto.UserInfoDTO;
 import com.mindfire.reviewhotel.web.repository.UserRepository;
 
@@ -51,6 +52,7 @@ public class UserInfoService {
 		newUser.setRole("user");
 		
 		UserInfo createdUser = userRepository.save(newUser);
+		model.addAttribute("searchByNameData", new SearchByNameDTO());
 		if (createdUser == null) {
 			return Constant.HOME_PAGE;
 		} else {

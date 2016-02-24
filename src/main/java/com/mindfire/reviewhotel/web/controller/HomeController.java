@@ -37,8 +37,7 @@ public class HomeController {
 	 * @return HOME_PAGE
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
-		model.addAttribute("searchByNameData", new SearchByNameDTO());
+	public String home(@ModelAttribute("searchByNameData") SearchByNameDTO searchByNameDto) {
 		return Constant.HOME_PAGE;
 	}
 
@@ -46,11 +45,10 @@ public class HomeController {
 	 * Mapping with signUp value to render by returning its name.
 	 * 
 	 * @param model
-	 * @return signUp
+	 * @return ModelAndViewobject
 	 */
 	@RequestMapping(value = "signUp", method = RequestMethod.GET)
-	public ModelAndView signUp(Model model) {
-		model.addAttribute("signUpData", new UserInfoDTO());
+	public ModelAndView signUp(@ModelAttribute("signUpData") UserInfoDTO userInfoDto) {
 		return new ModelAndView(Constant.SIGN_UP_PAGE);
 	}
 
@@ -58,11 +56,10 @@ public class HomeController {
 	 * Mapping with signIn value to render by returning its name.
 	 * 
 	 * @param model
-	 * @return signIn
+	 * @return ModelAndView object
 	 */
 	@RequestMapping(value = "signIn", method = RequestMethod.GET)
-	public ModelAndView signIn(Model model) {
-		model.addAttribute("signInData", new SignInDTO());
+	public ModelAndView signIn(@ModelAttribute("signInData") SignInDTO signInDto) {
 		return new ModelAndView(Constant.SIGN_IN_PAGE);
 	}
 
@@ -70,19 +67,18 @@ public class HomeController {
 	 * Mapping with index value to render by returning its name.
 	 * 
 	 * @param model
-	 * @return HOME_PAGE
+	 * @return ModelAndView object
 	 */
 	@RequestMapping("index")
-	public ModelAndView index(Model model) {
-		model.addAttribute("searchByNameData", new SearchByNameDTO());
+	public ModelAndView index(@ModelAttribute("searchByNameData") SearchByNameDTO searchByNameDto) {
 		return new ModelAndView(Constant.HOME_PAGE);
 	}
 
 	/**
-	 * Mapping with searchByCategory value to render by returning its name.
+	 * Mapping with searchByCategory value to render by returning its view name.
 	 * 
 	 * @param model
-	 * @return SEARCH_BY_CATEGORY
+	 * @return ModelAndView object
 	 */
 	@RequestMapping("searchByCategory")
 	public ModelAndView searchByCategory() {
@@ -90,19 +86,20 @@ public class HomeController {
 	}
 
 	/**
-	 * Mapping with hotel value to render by returning its name.
+	 * Mapping with hotel value to render by returning its view name and
+	 * checking weather user is admin or not.
 	 * 
 	 * @param model
 	 * @return HOTEL_PAGE
 	 */
 	@RequestMapping(value = "hotel", method = RequestMethod.GET)
-	public ModelAndView hotel(Model model, HttpSession session) {
+	public ModelAndView hotel(@ModelAttribute("searchByNameData") SearchByNameDTO searchByNameDto,
+			@ModelAttribute("hotelData") HotelDTO hotelDto, HttpSession session) {
 		if (session.getAttribute("user") == null || session.getAttribute("user").equals("")
 				|| session.getAttribute("user").equals("user")) {
-			model.addAttribute("searchByNameData",new SearchByNameDTO());
 			return new ModelAndView(Constant.HOME_PAGE);
 		}
-		model.addAttribute("hotelData", new HotelDTO());
+		
 		return new ModelAndView(Constant.HOTEL_PAGE);
 	}
 

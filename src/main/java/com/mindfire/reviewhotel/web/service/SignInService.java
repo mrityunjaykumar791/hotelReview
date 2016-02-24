@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import com.mindfire.reviewhotel.web.constant.Constant;
 import com.mindfire.reviewhotel.web.domain.UserInfo;
+import com.mindfire.reviewhotel.web.dto.SearchByNameDTO;
 import com.mindfire.reviewhotel.web.dto.SignInDTO;
 import com.mindfire.reviewhotel.web.repository.UserRepository;
 
@@ -37,20 +38,21 @@ public class SignInService {
 	 * @see BCryptPasswordEncoder
 	 * @return HOME_PAGE or SIGN_IN_PAGE
 	 */
-	public String validate(SignInDTO signInDto, HttpSession session,Model model) {
+	public String validate(SignInDTO signInDto, HttpSession session, Model model) {
 		BCryptPasswordEncoder passDecoder = new BCryptPasswordEncoder();
 		UserInfo userInfo = userRepository.findByUserName(signInDto.getUserName());
 
 		if (passDecoder.matches(signInDto.getPassword(), userInfo.getPassword())) {
 			session.setAttribute("userName", userInfo.getUserName());
 			session.setAttribute("userId", userInfo.getId());
-
 			if (userInfo.getRole().equals("admin")) {
 				session.setAttribute("user", "admin");
 			} else {
 				session.setAttribute("user", "user");
 			}
-         return Constant.HOME_PAGE;
+
+			model.addAttribute("searchByNameData", new SearchByNameDTO());
+			return Constant.HOME_PAGE;
 		} else {
 			model.addAttribute("status", "Please Enter Valid UserName and Password!");
 			return Constant.SIGN_IN_PAGE;

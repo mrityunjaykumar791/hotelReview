@@ -45,11 +45,10 @@ public class HotelController {
 	  * @param reviewDto
 	  * @param model
 	  * @param hotelId
-	  * @return HOTEL_TEMPLATE
+	  * @return ModelAndView object
 	  */
 	 @RequestMapping(value="hotelTemplate/{id}", method=RequestMethod.GET)
 	    public ModelAndView hotelTemplate(@ModelAttribute("reviewData") ReviewDTO reviewDto, Model model,@PathVariable("id") Long hotelId) {
-	    	model.addAttribute("reviewData", new ReviewDTO());
 	        return hotelService.searchHotelDetailById(hotelId,model);
 	 }
 }

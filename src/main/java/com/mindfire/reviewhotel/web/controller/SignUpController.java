@@ -33,7 +33,6 @@ public class SignUpController {
 	 */
 	@RequestMapping(value = "signUpAction", method = RequestMethod.POST)
 	public String submit(@ModelAttribute("signUpData") UserInfoDTO userInfoDto, Model model) {
-		model.addAttribute("signInData", new UserInfoDTO());
 		return userInfoService.createUserInfo(userInfoDto, model);
 	}
 }

@@ -58,10 +58,10 @@ public class ReviewService {
 		List<Review> reviewList = reviewRepository.findByHotelIdOrderByReviewDateDesc(review.getHotelId());
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		Iterator<Review> iterator = reviewList.iterator();
-		
 		while (iterator.hasNext()) {
 			averageRating += (iterator.next()).getRatingValue();
 		}		
+		
 		averageRating /=reviewList.size();
 		modelMap.put("averageRating", averageRating);
 		modelMap.put("totalComment", reviewList.size());
@@ -88,8 +88,8 @@ public class ReviewService {
 		while (iterator.hasNext()) {
 			averageRating += (iterator.next()).getRatingValue();
 		}		
-		averageRating /=reviewList.size();
 		
+		averageRating /=reviewList.size();
 		modelMap.put("averageRating", averageRating);
 		modelMap.put("totalComment", reviewList.size());
 		modelMap.put("reviews", reviewList);
