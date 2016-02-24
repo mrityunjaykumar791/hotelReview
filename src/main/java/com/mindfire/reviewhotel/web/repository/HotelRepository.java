@@ -15,7 +15,8 @@ import com.mindfire.reviewhotel.web.domain.Hotel;
  * @version 1.0
  * @since 18-02-2016
  * 
- * Repository for {@link Hotel} Entity.
+ * Repository for {@link Hotel} Entity
+ * used for CRUD operation on Hotel.
  */
 @Repository
 public interface HotelRepository extends JpaRepository<Hotel, Long> {

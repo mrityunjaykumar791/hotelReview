@@ -44,6 +44,7 @@
 							</div>
 						</div>
 					</div>
+					<h2 style="color:red;">${hotelStatus}</h2>
 				</section>
 			</div>
 			</form:form>

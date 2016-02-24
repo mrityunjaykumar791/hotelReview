@@ -43,6 +43,8 @@
 						class="glyphicon glyphicon-user form-control-feedback"></i>
 				</div>
 				
+<%-- 				<h6 style="color:red;">${emailStatus}</h6> --%>
+
 				<div class="form-group has-feedback">
 					<form:input path="userEmail" type="email" cssClass="form-control" placeholder="Enter Email" required="required"/> <i
 						class="glyphicon glyphicon-envelope form-control-feedback"></i>

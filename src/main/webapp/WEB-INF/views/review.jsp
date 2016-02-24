@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form:form action="reviewAction" method="POST" modelAttribute="reviewData">
+<form:form action="reviewMessageAction" method="POST" modelAttribute="reviewMessageData">
 <h1>REVIEW PAGE</h1>
 </form:form>
 </body>

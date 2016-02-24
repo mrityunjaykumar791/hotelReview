@@ -4,6 +4,7 @@
 package com.mindfire.reviewhotel.web.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -76,9 +77,13 @@ public class HotelService {
 		List<Hotel> hotelList = hotelRepository.findByHotelLocationIgnoreCaseContaining(searchDto.getHotelLocation());
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
+		if(hotelList.isEmpty()){
+			model.addAttribute("hotelStatus", "Sorry! Result Not Found Please Enter Valid Location.");
+		}else{
 		modelMap.put("hotels", hotelList);
+		}
+		
 		return new ModelAndView(Constant.SEARCH_BY_LOCATION, modelMap);
-
 	}
 
 	/**
@@ -96,16 +101,26 @@ public class HotelService {
 	}
 
 	/**
-	 * This method is used for search the hotel based on parameterized id.
+	 * This method is used for search the hotel based on parameterized id
+	 * and based on that hotel object it will find all review of that hotel in descending order.
 	 * 
 	 * @param hotelId
 	 * @return ModelAndView object
 	 */
-	public ModelAndView searchHotelDetailById(Long hotelId) {
+	public ModelAndView searchHotelDetailById(Long hotelId,Model model) {
+		int averageRating = 0;
 		Hotel hotel = hotelRepository.findById(hotelId);
 		List<Review> reviewList = reviewRepository.findByHotelIdOrderByReviewDateDesc(hotel);
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
+		Iterator<Review> iterator = reviewList.iterator();
+		while (iterator.hasNext()) {
+			averageRating += (iterator.next()).getRatingValue();
+		}		
+		averageRating /=reviewList.size();
+
+		modelMap.put("averageRating", averageRating);
+		modelMap.put("totalComment", reviewList.size());
 		modelMap.put("hotelById", hotel);
 		modelMap.put("reviews", reviewList);
 		return new ModelAndView(Constant.HOTEL_TEMPLATE, modelMap);
@@ -119,9 +134,13 @@ public class HotelService {
 	 */
 	public ModelAndView searchHotelByName(String hotelName) {
 		List<Hotel> hotelList = hotelRepository.findByHotelNameIgnoreCaseContaining(hotelName);
-
 		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		if(hotelList.isEmpty()){
+			modelMap.putIfAbsent("status","Sorry! Result Not Found!");
+			}else{
 		modelMap.put("hotelsList", hotelList);
+			}
 		return new ModelAndView(Constant.HOME_PAGE, modelMap);
 	}
 }

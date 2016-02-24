@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mindfire.reviewhotel.web.dto.SearchByNameDTO;
 import com.mindfire.reviewhotel.web.dto.SearchDTO;
 import com.mindfire.reviewhotel.web.service.HotelService;
+import com.mindfire.reviewhotel.web.service.UserInfoService;
 
 /**
  * @author mrityunjay kumar
@@ -25,6 +27,9 @@ public class SearchController {
 
 	@Autowired
 	private HotelService hotelService;
+	
+	@Autowired
+	private UserInfoService userInfoService;
 	
 	/**
 	 * Request mapping with searchAction Value To search hotels based on the location.
@@ -80,4 +85,14 @@ public class SearchController {
 	    	return hotelService.searchHotelByName(searchByNameDto.getHotelName());
 	    }
 	    
+	    /**
+	     * Request mapping  with userDetails/{id} to search user details by provided  userId.
+	     * 
+	     * @param userId
+	     * @return ModelAndView object.
+	     */
+	    @RequestMapping(value="userDetails/{id}", method=RequestMethod.GET)
+	    public ModelAndView hotelTemplate(@PathVariable("id") Long userId) {
+	        return userInfoService.userDetails(userId);
+	    }
 }

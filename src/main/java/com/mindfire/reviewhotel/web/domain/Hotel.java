@@ -23,7 +23,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="hotel")
-@NamedNativeQuery(name="hotel.findAll", query = "SELECT h FROM hotel h")
+@NamedNativeQuery(name="hotel.All", query = "SELECT h FROM hotel h")
 public class Hotel {
 
 	@Id

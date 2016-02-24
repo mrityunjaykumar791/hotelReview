@@ -51,6 +51,7 @@
 				<!-- This container is used for Displaying the hotel List -->
 					<div class="container-fluid">
 						<div class="row">
+						<h2 style="color:red;">${status}</h2>
 							<c:forEach var="hotelsDetails" items="${hotelsList}">
 
 								<div class="col-md-6">
@@ -65,13 +66,11 @@
 												class="img-rectangle" />
 										</div>
 										<div class="panel-footer">
-											<c:out value="${hotelsDetails.id }" />
-											<br />
 											<c:out value="${hotelsDetails.hotelDescription}" />
 											<br />
-											<c:out value="${hotelsDetails.hotelWebsite}" />
-											<br />
-											<c:out value="${hotelsDetails.hotelCategory }" />
+											<b>Hotel Category:</b>
+											<c:out value="${hotelsDetails.hotelCategory }" /><br/>
+											<a href="#"><c:out value="${hotelsDetails.hotelWebsite}" /></a>
 											<p>
 												<a class="btn"
 													href="hotelTemplate/<c:out value="${hotelsDetails.id }" />">View

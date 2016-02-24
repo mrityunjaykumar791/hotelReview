@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mindfire.reviewhotel.web.constant.Constant;
-import com.mindfire.reviewhotel.web.dto.HotelDTO;
 import com.mindfire.reviewhotel.web.dto.SearchByNameDTO;
 import com.mindfire.reviewhotel.web.dto.SignInDTO;
 import com.mindfire.reviewhotel.web.service.SignInService;
@@ -39,9 +38,9 @@ public class SignInController {
 	 */
 	 @RequestMapping(value="signInAction",method = RequestMethod.POST)
 	    public String submit(@ModelAttribute("signInData") SignInDTO signInDto, Model model, HttpSession session) {
-		    model.addAttribute("hotelData",new HotelDTO());
 		    model.addAttribute("searchByNameData",new SearchByNameDTO());
-	        return signInService.validate(signInDto,session);
+		    model.addAttribute("signIndata",new SignInDTO());
+	        return signInService.validate(signInDto,session,model);
 	    }
 	 
 	 /**

@@ -19,9 +19,6 @@
 </head>
 <body>
 
-<% if(session.getAttribute("user") == null || session.getAttribute("user").equals("") || session.getAttribute("user").equals("user")){
-    response.sendRedirect("index");
-}%>
 <div class="bg-1">
   <div class="container-fluid text-center">
     <img src="resources/pic/hotelrating.jpg" class="img-circle" alt="hotel" width="150" height="150">
@@ -56,7 +53,6 @@
 								</li>
 				            </ul>
 				    </li>
-				<li><a href="review">ReviewMessage</a></li>
 				<li><a href="#">Change Password</a></li>
 				<li><a href="#">Add New Admin</a></li>
 			</ul>
@@ -74,7 +70,7 @@
 		<div class="col-md-4">
 		</div>
 		<div class="col-md-4">
-		    ${status}
+		    <h5 style="color:green;">${status}</h5>
 			<form:form action="adminAction" method="POST" modelAttribute="hotelData">
 				<div class="form-group">
 					 
@@ -83,19 +79,19 @@
 				</div>
 				<div class="form-group">
 					 
-					Hotel Website:
+					<label>Hotel Website:</label>
 					<form:input path="hotelWebsite" cssClass="form-control" id="exampleInputPassword1" placeholder="Hotel Website.." />
 					
 				</div>
 				<div class="form-group">
 					 
-					Hotel Location:
+					<label>Hotel Location:</label>
 					<form:input path="hotelLocation" cssClass="form-control" id="exampleInputPassword1"  placeholder="Enter Hotel Location." />
 					
 				</div>
 				<div class="form-group">
 					 
-					Hotel Description:
+					<label>Hotel Description:</label>
 				 <form:textarea path="hotelDescription" cssClass="form-control" rows="5" id="description" placeholder="Enter Hotel Description"/>
 					
 				</div>

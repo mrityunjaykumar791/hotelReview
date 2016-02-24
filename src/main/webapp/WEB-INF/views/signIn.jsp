@@ -24,6 +24,7 @@
 			<div class="col-md-4">
 				<!--to make the form in the center of the page-->
 					<h2>SignIn</h2>
+					<h5 style="color:red;">${status}</h5>
 					<form:form action="signInAction" method="post" modelAttribute="signInData">
 					<div class="form-group has-feedback">
 						<form:input path="userName" class="form-control" placeholder="UserName" /> <i
@@ -49,7 +50,7 @@
 					<!--forgot password-->
 					<form action="signUp">
 					<div>
-						<label>New User:Click Here<a href="signUp" class="graycolor">Click Here</a></label>
+						<label>New User:?<a href="signUp" class="graycolor">Click Here</a></label>
 					</div>
 					</form>
 					<form:form action="forgotAction">

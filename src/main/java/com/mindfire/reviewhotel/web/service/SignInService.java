@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.mindfire.reviewhotel.web.constant.Constant;
 import com.mindfire.reviewhotel.web.domain.UserInfo;
@@ -36,7 +37,7 @@ public class SignInService {
 	 * @see BCryptPasswordEncoder
 	 * @return HOME_PAGE or SIGN_IN_PAGE
 	 */
-	public String validate(SignInDTO signInDto, HttpSession session) {
+	public String validate(SignInDTO signInDto, HttpSession session,Model model) {
 		BCryptPasswordEncoder passDecoder = new BCryptPasswordEncoder();
 		UserInfo userInfo = userRepository.findByUserName(signInDto.getUserName());
 
@@ -46,16 +47,14 @@ public class SignInService {
 
 			if (userInfo.getRole().equals("admin")) {
 				session.setAttribute("user", "admin");
-				return Constant.HOTEL_PAGE;
 			} else {
 				session.setAttribute("user", "user");
-				return Constant.HOME_PAGE;
 			}
-
+         return Constant.HOME_PAGE;
 		} else {
+			model.addAttribute("status", "Please Enter Valid UserName and Password!");
 			return Constant.SIGN_IN_PAGE;
 		}
-
 	}
 
 }

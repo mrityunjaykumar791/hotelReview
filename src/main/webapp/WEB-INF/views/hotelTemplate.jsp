@@ -115,15 +115,17 @@
 
 				<form:form action="${pageContext.request.contextPath}/reviewAction"
 					method="POST" modelAttribute="reviewData">
-					<!--This div is used for textarea and button for post the review-->
-
 					<%
 						if (session.getAttribute("user") == null || session.getAttribute("user").equals("")) {
 					%>
+					<h4 style="color: red;">
+						<b>For Share Experience Please LogIn</b>
+					</h4>
 					<h4>Rating And Comments:</h4>
 					<%
 						} else {
 					%>
+					<!--This div is used for textarea and button for post the review-->
 					<h4>Leave a Comment:</h4>
 					<%
 						out.println(session.getAttribute("userName"));
@@ -133,13 +135,14 @@
 							rows="5" cols="30" placeholder="Enter Comment.."
 							required="required" />
 					</div>
-					<!-- Thease two hidden field are used for taking  userId and hotelId -->
+					<!-- These two hidden field are used for taking  userId and hotelId -->
 					<form:hidden path="hotelId" value="${hotelById.id }" />
 					<form:hidden path="userId" value="${sessionScope.userId }" />
 
 					<button type="submit" class="btn btn-success">Submit</button>
 					<button type="reset" class="btn btn-default">Clear</button>
-					<!-- This Div Is Used For checking Purpose for rating Value -->
+
+					<!-- Rating meter -->
 					<div class="col-sm-10">
 						<input id="rating-system" type="number" class="rating"
 							name="ratingValue" min="1" max="5" step="1">
@@ -148,35 +151,74 @@
 						}
 					%>
 				</form:form>
+				<b>Average Rating:</b><br />
+				<c:forEach var="rate" begin="1" end="${averageRating}">
+					<img
+						src="${pageContext.request.contextPath}/resources/pic/Star_small.png"
+						height="15" width="15" />
+				</c:forEach>
 				<br />
-				<hr />
 				<!--for number of comment-->
+				<a href="#">Total Comments: <span class="badge">${totalComment}</span></a><br>
+				<hr />
 				<c:forEach var="reviewsList" items="${reviews}">
 					<div class="row">
-
 						<div class="col-md-2">
-
 							<img
 								src="${pageContext.request.contextPath}/resources/pic/emptyProfile.png"
 								class="img-circle" height="65" width="65" alt="hotelPic" />
-
 						</div>
-						<div class="col-md-10">
+						<div class="col-md-8">
+							<%
+								if (session.getAttribute("user") == null || session.getAttribute("user").equals("")
+											|| session.getAttribute("user").equals("user")) {
+							%>
 							<h4>
 								<c:out value="${(reviewsList.userId).userName}" />
 								<small><c:out value="${reviewsList.reviewDate}" /></small>
 							</h4>
 							<p>
 								<b>Rating Points: </b>
-								<c:out value="${reviewsList.ratingValue}" />
-								Out Of 5.
+								<c:forEach var="rate" begin="1" end="${reviewsList.ratingValue}">
+									<img
+										src="${pageContext.request.contextPath}/resources/pic/Star_small.png"
+										height="15" width="15" />
+								</c:forEach>
 							</p>
 							<p>
 								<c:out value="${reviewsList.reviewComment}" />
 							</p>
+							<%
+								} else {
+							%>
+							<h4>
+								<a
+									href="${pageContext.request.contextPath}/userDetails/${(reviewsList.userId).id}"><c:out
+										value="${(reviewsList.userId).userName}" /></a><small><c:out
+										value="${reviewsList.reviewDate}" /></small>
+							</h4>
+							<p>
+								<b>Rating Points: </b>
+								<c:forEach var="rate" begin="1" end="${reviewsList.ratingValue}">
+									<img
+										src="${pageContext.request.contextPath}/resources/pic/Star_small.png"
+										height="15" width="15" />
+								</c:forEach>
+
+							</p>
+							<p>
+								<c:out value="${reviewsList.reviewComment}" />
+							</p>
+							<p>
+								<a class="btn"
+									href="${pageContext.request.contextPath}/hotelTemplateAfterDeleteComment/<c:out value="${reviewsList.id }" />">Delete
+									Comment! »</a>
+							</p>
+							<%
+								}
+							%>
 							<hr />
 						</div>
-
 					</div>
 				</c:forEach>
 			</div>

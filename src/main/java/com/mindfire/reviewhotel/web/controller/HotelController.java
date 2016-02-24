@@ -36,7 +36,6 @@ public class HotelController {
 	 */
 	 @RequestMapping(value="adminAction",method = RequestMethod.POST)
 	    public String submit(@ModelAttribute("hotelData") HotelDTO hotelDto, Model model) {
-	        model.addAttribute("hotelData", new HotelDTO());
 	        return hotelService.saveHotelDetails(hotelDto, model);
 	    }
 	 
@@ -51,6 +50,6 @@ public class HotelController {
 	 @RequestMapping(value="hotelTemplate/{id}", method=RequestMethod.GET)
 	    public ModelAndView hotelTemplate(@ModelAttribute("reviewData") ReviewDTO reviewDto, Model model,@PathVariable("id") Long hotelId) {
 	    	model.addAttribute("reviewData", new ReviewDTO());
-	        return hotelService.searchHotelDetailById(hotelId);
-	    }
+	        return hotelService.searchHotelDetailById(hotelId,model);
+	 }
 }

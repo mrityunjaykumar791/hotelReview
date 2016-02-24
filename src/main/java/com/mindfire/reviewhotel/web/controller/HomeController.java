@@ -3,6 +3,8 @@
  */
 package com.mindfire.reviewhotel.web.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -94,7 +96,12 @@ public class HomeController {
 	 * @return HOTEL_PAGE
 	 */
 	@RequestMapping(value = "hotel", method = RequestMethod.GET)
-	public ModelAndView hotel(Model model) {
+	public ModelAndView hotel(Model model, HttpSession session) {
+		if (session.getAttribute("user") == null || session.getAttribute("user").equals("")
+				|| session.getAttribute("user").equals("user")) {
+			model.addAttribute("searchByNameData",new SearchByNameDTO());
+			return new ModelAndView(Constant.HOME_PAGE);
+		}
 		model.addAttribute("hotelData", new HotelDTO());
 		return new ModelAndView(Constant.HOTEL_PAGE);
 	}

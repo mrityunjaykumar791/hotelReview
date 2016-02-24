@@ -3,10 +3,14 @@
  */
 package com.mindfire.reviewhotel.web.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mindfire.reviewhotel.web.constant.Constant;
 import com.mindfire.reviewhotel.web.domain.UserInfo;
@@ -45,14 +49,26 @@ public class UserInfoService {
 		newUser.setUserEmail(userInfoDto.getUserEmail());
 		newUser.setPassword(passEncoder.encode(userInfoDto.getPassword()));
 		newUser.setRole("user");
-
+		
 		UserInfo createdUser = userRepository.save(newUser);
-
 		if (createdUser == null) {
 			return Constant.HOME_PAGE;
 		} else {
-			model.addAttribute("userDetails", newUser);
 			return Constant.HOME_PAGE;
 		}
+	}
+	
+	/**
+	 * This Method is used for finding the user details by their id.
+	 * 
+	 * @param userId
+	 * @return ModelAndView object
+	 */
+	public ModelAndView userDetails(Long userId){
+		UserInfo userInfo = userRepository.findById(userId);
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		modelMap.put("userInfo", userInfo);
+		return new ModelAndView("userDetails", modelMap);
 	}
 }
