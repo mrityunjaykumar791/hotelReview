@@ -19,11 +19,12 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-/**
- * DataJPAConfig Class is Used For Configuration of Spring DataJPA.
+/** 
  * @author mrityunjay kumar
  * @version 1.0
- * @since 18-02-2016 
+ * @since 18-02-2016
+ * 
+ * DataJPAConfig Class is Used For Configuration of Spring DataJPA.
  */
 @Configuration
 @EnableTransactionManagement
@@ -42,6 +43,7 @@ public class DataJPAConfig {
 	 * Entity manager definition.
 	 * Create a new LocalContainerEntityManagerFactoryBean object.
 	 * We need to create this object because it creates the JPA EntityManagerFactory.
+	 * 
 	 * @return LocalContainerEntityManagerFactoryBean object.
 	 */
 	@Bean
@@ -82,6 +84,7 @@ public class DataJPAConfig {
 	 * Creates the the JpaTransactionManager instance.
 	 * Configure the entity manager factory whose transactions are managed by
 	 * the created JpaTransactionManager object.
+	 * 
 	 * @return JpaTransactionManager Object.
 	 */
 	@Bean
@@ -93,7 +96,8 @@ public class DataJPAConfig {
 
 	/**
 	 * Translates native resource exceptions to Spring's DataAccessException hierarchy
-	 * @return
+	 * 
+	 * @return PersistenceExceptionTranslationPostProcessor object
 	 */
 	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {

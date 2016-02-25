@@ -11,57 +11,61 @@
 <!--set the page width to size of the device and zoom level to 1-->
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SignIn</title>
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/bootstrap.min.css">
 </head>
 <body>
-<header>
-<%@include file="/WEB-INF/views/header.jsp" %>
-</header>
-	
-		<div class="row">
-			<div class="col-md-4"></div>
+	<header>
+		<%@include file="/WEB-INF/views/header.jsp"%>
+	</header>
 
-			<div class="col-md-4">
-				<!--to make the form in the center of the page-->
-					<h2>SignIn</h2>
-					<h5 style="color:red;">${status}</h5>
-					<form:form action="signInAction" method="post" modelAttribute="signInData">
-					<div class="form-group has-feedback">
-						<form:input path="userName" class="form-control" placeholder="UserName" /> <i
-							class="glyphicon glyphicon-user form-control-feedback"></i>
-					</div>
-					<div class="form-group has-feedback">
-						<form:password path="password" class="form-control" placeholder="Password" /> <i
-							class="glyphicon glyphicon-lock form-control-feedback"></i>
-					</div>
+	<div class="row">
+		<div class="col-md-4"></div>
 
-					<div class="row">
-						<span class="col-md-6"> <!--sign in button-->
-						 <input type="submit"
-								class="btn btn-primary custom-but  btn-signin" value="Login" />
-								<button type="reset" class="btn btn-default">
-					    		Reset
-				       			</button>
-						</span>
+		<div class="col-md-4">
+			<!--to make the form in the center of the page-->
+			<h2>SignIn</h2>
+			<h5 style="color: red;">${status}</h5>
+			<form:form action="signInAction" method="post"
+				modelAttribute="signInData">
+				<div class="form-group has-feedback">
+					<form:input path="userName" class="form-control"
+						placeholder="UserName" />
+					<i class="glyphicon glyphicon-user form-control-feedback"></i>
+				</div>
+				<div class="form-group has-feedback">
+					<form:password path="password" class="form-control"
+						placeholder="Password" />
+					<i class="glyphicon glyphicon-lock form-control-feedback"></i>
+				</div>
 
-					</div>
-					</form:form>
-					<!--row-->
-					<!--forgot password-->
-					<form action="signUp">
-					<div>
-						<label>New User:?<a href="signUp" class="graycolor">Click Here</a></label>
-					</div>
-					</form>
-					<form:form action="forgotAction">
-					<div>
-						<label>Forgot your password:<a href="#" class="graycolor">Click Here</a></label>
-					</div>
-					</form:form>
-		
-			</div>
-			<div class="col-md-4"></div>
+				<div class="row">
+					<span class="col-md-6"> <!--sign in button--> <input
+						type="submit" class="btn btn-primary custom-but  btn-signin"
+						value="Login" />
+						<button type="reset" class="btn btn-default">Reset</button>
+					</span>
+
+				</div>
+			</form:form>
+			<!--row-->
+			<!--forgot password-->
+			<form action="signUp">
+				<div>
+					<label>New User:?<a href="signUp" class="graycolor">Click
+							Here</a></label>
+				</div>
+			</form>
+			<form:form action="forgotAction">
+				<div>
+					<label>Forgot your password:<a href="#" class="graycolor">Click
+							Here</a></label>
+				</div>
+			</form:form>
+
 		</div>
+		<div class="col-md-4"></div>
+	</div>
 
 	<!--Close Body-->
 </body>

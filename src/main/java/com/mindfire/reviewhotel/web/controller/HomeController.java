@@ -106,7 +106,7 @@ public class HomeController {
 	/**
 	 * Mapping with profile value to render by returning its name.
 	 * 
-	 * @return PROFILE_PAGE
+	 * @return ModelAndView object
 	 */
 	@RequestMapping("profile")
 	public ModelAndView profile() {
@@ -128,7 +128,7 @@ public class HomeController {
 	 * 
 	 * @param searchDto
 	 * @param model
-	 * @return SEARCH_BY_LOCATION
+	 * @return ModelAndView object
 	 */
 	@RequestMapping(value = "searchByLocation", method = RequestMethod.GET)
 	public ModelAndView searchByLocation(@ModelAttribute("searchData") SearchDTO searchDto, Model model) {

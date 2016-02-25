@@ -211,7 +211,7 @@
 							</p>
 							<p>
 								<a class="btn"
-									href="${pageContext.request.contextPath}/hotelTemplateAfterDeleteComment/<c:out value="${reviewsList.id }" />">Delete
+									href="${pageContext.request.contextPath}/hotelTemplateAfterDeleteComment/${reviewsList.id }">Delete
 									Comment! »</a>
 							</p>
 							<%

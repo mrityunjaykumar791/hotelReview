@@ -50,7 +50,7 @@ public class UserInfoService {
 		newUser.setUserEmail(userInfoDto.getUserEmail());
 		newUser.setPassword(passEncoder.encode(userInfoDto.getPassword()));
 		newUser.setRole("user");
-		
+
 		UserInfo createdUser = userRepository.save(newUser);
 		model.addAttribute("searchByNameData", new SearchByNameDTO());
 		if (createdUser == null) {
@@ -59,17 +59,17 @@ public class UserInfoService {
 			return Constant.HOME_PAGE;
 		}
 	}
-	
+
 	/**
 	 * This Method is used for finding the user details by their id.
 	 * 
 	 * @param userId
 	 * @return ModelAndView object
 	 */
-	public ModelAndView userDetails(Long userId){
+	public ModelAndView userDetails(Long userId) {
 		UserInfo userInfo = userRepository.findById(userId);
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		
+
 		modelMap.put("userInfo", userInfo);
 		return new ModelAndView("userDetails", modelMap);
 	}

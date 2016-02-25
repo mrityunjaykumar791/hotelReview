@@ -80,7 +80,7 @@ public class HotelService {
 		if(hotelList.isEmpty()){
 			model.addAttribute("hotelStatus", "Sorry! Result Not Found Please Enter Valid Location.");
 		}else{
-		modelMap.put("hotels", hotelList);
+			modelMap.put("hotels", hotelList);
 		}
 		
 		return new ModelAndView(Constant.SEARCH_BY_LOCATION, modelMap);
@@ -117,7 +117,7 @@ public class HotelService {
 		while (iterator.hasNext()) {
 			averageRating += (iterator.next()).getRatingValue();
 		}		
-		averageRating /=reviewList.size();
+		averageRating /= reviewList.size();
 
 		modelMap.put("averageRating", averageRating);
 		modelMap.put("totalComment", reviewList.size());

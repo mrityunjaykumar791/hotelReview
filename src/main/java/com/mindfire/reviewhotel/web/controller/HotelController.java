@@ -18,7 +18,8 @@ import com.mindfire.reviewhotel.web.service.HotelService;
  * @author mrityunjay kumar
  * @version 1.0
  * @since 18-02-2016 
- *
+ * 
+ * This Class is used for transfer the hotel related control to the service
  */
 
 @Controller

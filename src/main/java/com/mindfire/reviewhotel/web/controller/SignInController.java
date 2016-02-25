@@ -29,7 +29,7 @@ public class SignInController {
 	private SignInService signInService;
 	
 	/**
-	 * Request mapping with signInAction value to validate the User.
+	 * Request mapping with signInAction value and transfer the control to the service to validate the User.
 	 * 
 	 * @param signInDto
 	 * @param model
@@ -38,8 +38,6 @@ public class SignInController {
 	 */
 	 @RequestMapping(value="signInAction",method = RequestMethod.POST)
 	    public String submit(@ModelAttribute("signInData") SignInDTO signInDto, Model model, HttpSession session) {
-		    //model.addAttribute("searchByNameData",new SearchByNameDTO());
-		    //model.addAttribute("signIndata",new SignInDTO());
 	        return signInService.validate(signInDto,session,model);
 	    }
 	 
@@ -50,9 +48,8 @@ public class SignInController {
 	  * @return HOME_PAGE
 	  */
 	 @RequestMapping(value="logout", method = RequestMethod.GET)
-	 public String logout(Model model,HttpSession session){
+	 public String logout(@ModelAttribute("searchByNameData") SearchByNameDTO searchByNameDto,Model model,HttpSession session){
 		 session.invalidate();
-		 model.addAttribute("searchByNameData",new SearchByNameDTO());
 		 return Constant.HOME_PAGE;
 	 }
 }

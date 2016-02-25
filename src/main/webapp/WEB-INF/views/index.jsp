@@ -48,10 +48,10 @@
 						</div>
 					</form:form>
 
-				<!-- This container is used for Displaying the hotel List -->
+					<!-- This container is used for Displaying the hotel List -->
 					<div class="container-fluid">
 						<div class="row">
-						<h2 style="color:red;">${status}</h2>
+							<h2 style="color: red;">${status}</h2>
 							<c:forEach var="hotelsDetails" items="${hotelsList}">
 
 								<div class="col-md-6">
@@ -67,10 +67,10 @@
 										</div>
 										<div class="panel-footer">
 											<c:out value="${hotelsDetails.hotelDescription}" />
-											<br />
-											<b>Hotel Category:</b>
-											<c:out value="${hotelsDetails.hotelCategory }" /><br/>
-											<a href="#"><c:out value="${hotelsDetails.hotelWebsite}" /></a>
+											<br /> <b>Hotel Category:</b>
+											<c:out value="${hotelsDetails.hotelCategory }" />
+											<br /> <a href="#"><c:out
+													value="${hotelsDetails.hotelWebsite}" /></a>
 											<p>
 												<a class="btn"
 													href="hotelTemplate/<c:out value="${hotelsDetails.id }" />">View
