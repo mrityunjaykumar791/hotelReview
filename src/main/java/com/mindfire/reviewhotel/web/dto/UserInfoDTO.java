@@ -3,6 +3,12 @@
  */
 package com.mindfire.reviewhotel.web.dto;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * @author mrityunjay kumar
  * @version 1.0
@@ -11,10 +17,20 @@ package com.mindfire.reviewhotel.web.dto;
  *        This UserInfoDTO Class is used for Taking Data From the signUp view.
  */
 public class UserInfoDTO {
+	
+	@Size(min=2, max=30)
 	private String firstName;
+	
+	@Size(min=2, max=30)
 	private String lastName;
+	
+	@Size(min=5, max=30)
 	private String userName;
+	
+	@NotEmpty @Email
 	private String userEmail;
+	
+	@Pattern(regexp="((?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})")
 	private String password;
 
 	/**

@@ -34,30 +34,35 @@
 				<h2>SignUp</h2>
 				<div class="form-group has-feedback">
 					<form:input path="firstName" cssClass="form-control"
-						placeholder="FirstName" required="required" />
+						placeholder="FirstName" required="required"/>
 					<i class="glyphicon glyphicon-user form-control-feedback"></i>
+					 <form:errors path="firstName" cssClass="text-danger"></form:errors>
 				</div>
 				<div class="form-group has-feedback">
 					<form:input path="lastName" cssClass="form-control"
 						placeholder="LastName" required="required" />
 					<i class="glyphicon glyphicon-user form-control-feedback"></i>
+					 <form:errors path="lastName" cssClass="text-danger"></form:errors>
 				</div>
 
 				<div class="form-group has-feedback">
 					<form:input path="userName" cssClass="form-control"
 						placeholder="UserName" required="required" />
 					<i class="glyphicon glyphicon-user form-control-feedback"></i>
+					 <form:errors path="userName" cssClass="text-danger"></form:errors>
 				</div>
 				<div class="form-group has-feedback">
 					<form:input path="userEmail" type="email" cssClass="form-control"
-						placeholder="Enter Email" required="required" />
+						placeholder="Enter Email"/>
 					<i class="glyphicon glyphicon-envelope form-control-feedback"></i>
+					 <form:errors path="userEmail" cssClass="text-danger"></form:errors>
 				</div>
 
 				<div class="form-group has-feedback">
 					<form:password path="password" cssClass="form-control"
 						id="password" placeholder="Password" required="required" />
 					<i class="glyphicon glyphicon-lock form-control-feedback"></i>
+					 <form:errors path="password" cssClass="text-danger"></form:errors>
 				</div>
 
 				<div class="form-group has-feedback">

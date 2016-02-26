@@ -61,8 +61,9 @@ public class ReviewService {
 		while (iterator.hasNext()) {
 			averageRating += (iterator.next()).getRatingValue();
 		}		
-		
+		if(!reviewList.isEmpty())
 		averageRating /=reviewList.size();
+		
 		modelMap.put("averageRating", averageRating);
 		modelMap.put("totalComment", reviewList.size());
 		modelMap.put("reviews", reviewList);
@@ -88,7 +89,7 @@ public class ReviewService {
 		while (iterator.hasNext()) {
 			averageRating += (iterator.next()).getRatingValue();
 		}		
-		
+		if(!reviewList.isEmpty())
 		averageRating /=reviewList.size();
 		modelMap.put("averageRating", averageRating);
 		modelMap.put("totalComment", reviewList.size());

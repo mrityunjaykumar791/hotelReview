@@ -56,8 +56,7 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="index"><span
-									class="glyphicon glyphicon-user"></span>
-									<%out.println(session.getAttribute("userName"));%></a></li>
+									class="glyphicon glyphicon-user"></span> <%out.println(session.getAttribute("userName"));%></a></li>
 							<li><a href="logout"><span
 									class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 						</ul>
@@ -75,32 +74,34 @@
 
 						<label>Hotel Name:</label>
 						<form:input path="hotelName" class="form-control"
-							placeholder="Enter hotel Name.." />
+							placeholder="Enter hotel Name.." required="required" />
 					</div>
 					<div class="form-group">
 
 						<label>Hotel Website:</label>
 						<form:input path="hotelWebsite" cssClass="form-control"
-							id="exampleInputPassword1" placeholder="Hotel Website.." />
+							placeholder="Hotel Website.." required="required" />
 
 					</div>
 					<div class="form-group">
 
 						<label>Hotel Location:</label>
 						<form:input path="hotelLocation" cssClass="form-control"
-							id="exampleInputPassword1" placeholder="Enter Hotel Location." />
+							placeholder="Enter Hotel Location." />
 
 					</div>
 					<div class="form-group">
 
 						<label>Hotel Description:</label>
 						<form:textarea path="hotelDescription" cssClass="form-control"
-							rows="5" id="description" placeholder="Enter Hotel Description" />
+							rows="5" id="description" placeholder="Enter Hotel Description"
+							required="required" />
 
 					</div>
 					<div class="form-group">
 						<label for="sel1">Select list:</label>
-						<form:select class="form-control" path="hotelCategory">
+						<form:select class="form-control" path="hotelCategory"
+							required="required">
 							<option value="">Select Category:</option>
 							<option value="Three-Star">Three-Star</option>
 							<option value="Four-star">Four-Star</option>
@@ -113,7 +114,9 @@
 						<form:input path="hotelImage" id="exampleInputFile" type="file" />
 
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-primary start">
+						<i class="glyphicon glyphicon-upload"></i> <span>Save</span>
+					</button>
 					<button type="reset" class="btn btn-default">Reset</button>
 				</form:form>
 			</div>

@@ -53,6 +53,7 @@ public class DataJPAConfig {
 		em.setPackagesToScan("com.mindfire.reviewhotel.web.domain");
 		em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		em.setJpaProperties(additionalProperties());
+		
 		return em;
 	}
 
@@ -77,6 +78,7 @@ public class DataJPAConfig {
 		dataSource.setUrl(env.getProperty("database.url"));
 		dataSource.setUsername(env.getProperty("database.user"));
 		dataSource.setPassword(env.getProperty("database.password"));
+		
 		return dataSource;
 	}
 
@@ -91,6 +93,7 @@ public class DataJPAConfig {
 	public PlatformTransactionManager transactionManager() {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+		
 		return transactionManager;
 	}
 

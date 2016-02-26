@@ -9,8 +9,8 @@
  * For more Yii related demos visit http://demos.krajee.com
  */
 .rating-loading {
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
     font-size: 0px;
     color: #fff;
     background: transparent url('../img/loading.gif') top left no-repeat;
@@ -46,7 +46,7 @@
 }
 
 .rating-xl .rating-gly-star, .rating-xl .rating-gly-star .rating-stars:before {
-    padding-left: 2px;
+    padding-left: 1px;
 }
 
 .rating-active {
@@ -153,7 +153,7 @@
     cursor: not-allowed;
     display: inline-block;
     vertical-align: middle;
-    font-size: 60%;
+    font-size: 20%;
 }
 
 .clear-rating-active {
@@ -175,7 +175,7 @@
     color: #999;
     display: inline-block;
     vertical-align: middle;
-    font-size: 55%;
+    font-size: 20%;
 }
 
 .star-rating .caption {

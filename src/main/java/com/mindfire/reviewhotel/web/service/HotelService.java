@@ -62,7 +62,7 @@ public class HotelService {
 			return Constant.HOTEL_PAGE;
 		} else {
 			model.addAttribute("status", "Hotel registred");
-			return Constant.HOTEL_PAGE;
+			return "hotelPic";
 		}
 	}
 
@@ -116,7 +116,8 @@ public class HotelService {
 		Iterator<Review> iterator = reviewList.iterator();
 		while (iterator.hasNext()) {
 			averageRating += (iterator.next()).getRatingValue();
-		}		
+		}	
+		if(!reviewList.isEmpty())
 		averageRating /= reviewList.size();
 
 		modelMap.put("averageRating", averageRating);

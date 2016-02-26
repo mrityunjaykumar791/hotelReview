@@ -145,13 +145,16 @@
 					<!-- Rating meter -->
 					<div class="col-sm-10">
 						<input id="rating-system" type="number" class="rating"
-							name="ratingValue" min="1" max="5" step="1">
+							name="ratingValue" draggable="false">
 					</div>
 					<%
 						}
 					%>
 				</form:form>
 				<b>Average Rating:</b><br />
+				
+<!-- 				<input id="rating-system" type="number" class="rating" -->
+<%-- 										 value="${averageRating}" readonly="readonly" >	 			 --%>
 				<c:forEach var="rate" begin="1" end="${averageRating}">
 					<img
 						src="${pageContext.request.contextPath}/resources/pic/Star_small.png"
@@ -179,11 +182,16 @@
 							</h4>
 							<p>
 								<b>Rating Points: </b>
+								<!-- for future use that rating value will be displayed in well format -->
+<!-- 								<input id="rating-system" type="number" class="rating" -->
+<%-- 										 value="${reviewsList.ratingValue}" readonly="readonly"> --%>
+										 
 								<c:forEach var="rate" begin="1" end="${reviewsList.ratingValue}">
 									<img
 										src="${pageContext.request.contextPath}/resources/pic/Star_small.png"
 										height="15" width="15" />
 								</c:forEach>
+
 							</p>
 							<p>
 								<c:out value="${reviewsList.reviewComment}" />
@@ -199,6 +207,11 @@
 							</h4>
 							<p>
 								<b>Rating Points: </b>
+								
+								
+<!-- 						 			<input id="rating-system" type="number" class="rating" -->
+<%-- 										 value="${reviewsList.ratingValue}" readonly="readonly"> --%>
+					           
 								<c:forEach var="rate" begin="1" end="${reviewsList.ratingValue}">
 									<img
 										src="${pageContext.request.contextPath}/resources/pic/Star_small.png"
@@ -210,9 +223,9 @@
 								<c:out value="${reviewsList.reviewComment}" />
 							</p>
 							<p>
-								<a class="btn"
-									href="${pageContext.request.contextPath}/hotelTemplateAfterDeleteComment/${reviewsList.id }">Delete
-									Comment! »</a>
+								<a data-dz-remove class="btn btn-danger delete"
+									href="${pageContext.request.contextPath}/hotelTemplateAfterDeleteComment/${reviewsList.id }"><i
+									class="glyphicon glyphicon-trash"></i> Delete!</a>
 							</p>
 							<%
 								}
